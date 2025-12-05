@@ -35,7 +35,7 @@ body {
 }
 
 .envelope-container.open .envelope {
-    transform: translateY(-250px) scale(1.02);
+    transform: translateY(-220px) scale(1.02);
 }
 
 
@@ -197,7 +197,7 @@ h2 {
     }
 
     .photo {
-        width: 220px;
+        width: 180px;
         right: 12px;
         bottom: -130px;
     }
