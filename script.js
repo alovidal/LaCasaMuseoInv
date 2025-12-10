@@ -1,48 +1,48 @@
-function toggleLetter() {
-    const container = document.querySelector(".envelope-container");
-    const aviso = document.querySelector(".aviso");
+let isAnimating = false;
+let musicStarted = false;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const envelopeContainer = document.getElementById("envelopeContainer");
     const music = document.getElementById("bg-music");
+    const letter = document.querySelector(".letter");
 
-    const isOpen = container.classList.toggle("open");
+    if (!envelopeContainer || !music || !letter) return;
 
-    if (isOpen) {
-        aviso.style.opacity = "0";
-        aviso.style.transform = "translate(-50%, -20px)";
-        setTimeout(() => {
-            aviso.style.display = "none";
-        }, 500);
+    const toggleLetter = () => {
+        if (isAnimating) return;
+        isAnimating = true;
 
-        if (music) {
-            music.volume = 0.3;
-            music.play().catch(() => {});
-        }
-    } else {
-        aviso.style.display = "block";
-        setTimeout(() => {
-            aviso.style.opacity = "1";
-            aviso.style.transform = "translate(-50%, 0)";
-        }, 10);
+        envelopeContainer.classList.toggle("open");
 
-        if (music) {
+        const isOpen = envelopeContainer.classList.contains("open");
+
+        letter.setAttribute("aria-hidden", isOpen ? "false" : "true");
+
+        if (isOpen) {
+            if (!musicStarted) {
+                music.play().catch(() => {
+                    musicStarted = false;
+                });
+                musicStarted = true;
+            } else {
+                music.play().catch(() => {});
+            }
+        } else {
             music.pause();
             music.currentTime = 0;
         }
-    }
-}
 
-document.addEventListener("visibilitychange", () => {
-    const music = document.getElementById("bg-music");
-    const container = document.querySelector(".envelope-container");
+        setTimeout(() => {
+            isAnimating = false;
+        }, 900);
+    };
 
-    if (!music) return;
+    envelopeContainer.addEventListener("click", toggleLetter);
 
-    if (document.hidden) {
-        if (!music.paused) {
-            music.pause();
+    envelopeContainer.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleLetter();
         }
-    } else {
-        if (container.classList.contains("open")) {
-            music.play().catch(() => {});
-        }
-    }
+    });
 });

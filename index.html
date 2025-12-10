@@ -3,48 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación</title>
+    <title>Invitación Obra Teatral – La Casa Museo</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="envelope-container" onclick="toggleLetter()">
+<main class="page-wrapper">
 
-    <!-- ABRIR -->
-     <h1 class="aviso">Abre el sobre para ver la invitación</h1>
+    <div 
+        class="envelope-container" 
+        id="envelopeContainer" 
+        role="button" 
+        aria-label="Abrir invitación"
+        tabindex="0"
+    >
+        <h1 class="aviso" id="avisoTexto">
+            Abre el sobre para ver la invitación
+        </h1>
 
-    <!-- SOBRE -->
-    <div class="envelope">
-        <div class="flap-wrapper">
-            <div class="flap"></div>
+        <div class="envelope">
+            <div class="flap-wrapper">
+                <div class="flap"></div>
+            </div>
         </div>
+
+        <article class="letter" aria-hidden="true">
+            <img class="photo" src="./assets/foto.jpeg" alt="Fotografía relacionada con la obra">
+
+            <h2>Invitación a la Obra Teatral</h2>
+
+
+            <h2 class="obra-title">"La Casa Museo"</h2>
+
+            <p class="creditos">
+                de Andy Jara Bascuñán — Dirigido por Alexis Espinoza<br>
+                Presentado por <strong>La Vitrina Rota</strong>
+            </p>
+
+            <p class="line"><strong>Fecha:</strong> Diciembre 19, 2025 — 10:00 Hrs.</p>
+            <p class="line"><strong>Lugar:</strong> Teatro (Auditorio 1) — Duoc UC, Sede San Carlos de Apoquindo</p>
+            <p class="line direccion">Cam. El Alba 12881, Las Condes, Región Metropolitana</p>
+
+            <p class="body-text">
+                Te invitamos a ser parte de esta experiencia escénica en la que
+                cada cosa tiene su belleza, pero no todos pueden verla.
+            </p>
+            <p class="body-text">
+                Tu presencia hará que esta función sea aún más especial.
+            </p>
+
+            <img class="firma" src="./assets/firma.png" alt="Firma de invitación">
+        </article>
     </div>
 
-    <!-- CARTA -->
-    <div class="letter">
-        <img class="photo" src="./assets/foto.jpeg" alt="photo">
-
-        <h2>Invitación a la Obra Teatral</h2>
-
-        <p class="title">La Casa Museo</p>
-
-        <p class="line"><strong>Fecha:</strong> Diciembre 19, 2025</p>
-        <p class="line"><strong>Hora:</strong> 10:00 AM</p>
-        <p class="line"><strong>Lugar:</strong> Teatro (auditorio 1) — Duoc UC — San Carlos de Apoquindo</p>
-
-        <p class="body-text">
-            Te invitamos a ser parte de esta experiencia escénica en la que
-            cada cosa tiene su belleza, pero no todos pueden verla.
-        </p>
-        <p class="body-text">
-            Tu presencia hará que esta función sea aún más especial.
-        </p>
-        <img class="firma" src="./assets/firma.png" alt="firma">
-    </div>
-
-</div>
+</main>
 
 <audio id="bg-music" src="music.mp3"></audio>
 
